@@ -1,0 +1,2 @@
+rofi.modi: window,ssh,drun,run
+rofi.theme: ~/.config/rofi/themes/default.rasi
