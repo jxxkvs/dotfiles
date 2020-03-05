@@ -154,6 +154,14 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers you can use
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
+#set $ws1 1 #终端
+#set $ws2 2 #浏览器
+#set $ws3 3 #编辑器
+#set $ws4 4 #数据库
+#set $ws5 5 #编程
+#set $ws6 6 #其他
+#set $ws7 7 #虚拟机
+#set $ws8 8 #媒体
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -228,6 +236,32 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 
+# 使窗口只能在固定的工作区打开
+#assign [class="google-chrome"] $ws2
+
+# 恢复布局
+exec --no-startup-id "i3-msg 'workspace $ws1; append_layout ~/.config/i3/workspace-terminal.json'"
+exec --no-startup-id "i3-msg 'workspace $ws2; append_layout ~/.config/i3/workspace-browser.json'"
+exec --no-startup-id "i3-msg 'workspace $ws3; append_layout ~/.config/i3/workspace-editor.json'"
+
+# 程序自启
+exec --no-startup-id "i3-msg 'workspace $ws1;
+     		     exec --no-startup-id alacritty --class terminal-1;
+		     exec --no-startup-id alacritty --class terminal-2;
+		     exec --no-startup-id alacritty --class terminal-3'"
+exec --no-startup-id "i3-msg 'workspace $ws2;
+     		     exec --no-startup-id alacritty;
+		     exec --no-startup-id google-chrome-stable'"
+exec --no-startup-id "i3-msg 'workspace $ws3;
+     		     exec --no-startup-id alacritty;
+		     exec --no-startup-id code'"
+#exec --no-startup-id "i3-msg 'workspace $ws1'"
+
+# 便笺本
+#exec --no-startup-id urxvt -name note_terminal -bg [0]#000000
+exec --no-startup-id alacritty --class note_terminal --config-file ~/.config/alacritty/alacritty-opacity.yml
+for_window [class="Alacritty" instance="note_terminal"] move scratchpad
+
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
@@ -301,14 +335,7 @@ exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
 
-# 自动任务
-#exec --no-startup-id compton -b # compton 可使窗口透明
-# 自动启动被特定了名称的虚拟终端，
-#exec --no-startup-id urxvt -name note_terminal -bg [0]#000000
-exec --no-startup-id alacritty --class note_terminal --config-file ~/.config/alacritty/alacritty-opacity.yml
-# 当激活时，送往便笺本
-for_window [class="Alacritty" instance="note_terminal"] move scratchpad
-#for_window [class="note_terminal"] move scratchpad
+
 
  
 
