@@ -21,7 +21,8 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:URWGothic-Book 11
+# font xft:URWGothic-Book 10
+font xft:DejaVu Sans 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -181,6 +182,15 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 
+bindsym mod1+1 workspace $ws1
+bindsym mod1+2 workspace $ws2
+bindsym mod1+3 workspace $ws3
+bindsym mod1+4 workspace $ws4
+bindsym mod1+5 workspace $ws5
+bindsym mod1+6 workspace $ws6
+bindsym mod1+7 workspace $ws7
+bindsym mod1+8 workspace $ws8
+
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
 bindsym $mod+Ctrl+2 move container to workspace $ws2
@@ -206,6 +216,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
+
+
+# 标题格式化
+for_window [class=".*"] title_format "■%title"
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -318,7 +332,7 @@ mode "resize" {
 # Lock screen
 bindsym $mod+9 exec --no-startup-id blurlock
 
-# Autostart applications
+# 自启应用
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 #exec --no-startup-id manjaro-hello
@@ -330,7 +344,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+# exec --no-startup-id xautolock -time 10 -locker blurlock # 自动锁屏
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 
@@ -391,7 +405,7 @@ bar {
         separator  #454947
 
 #                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
+        focused_workspace  #F9FAF9 #0066cc #EEE8D5
         active_workspace   #595B5B #353836 #FDF6E3
         inactive_workspace #595B5B #222D31 #EEE8D5
         binding_mode       #16a085 #2C2C2C #F9FAF9
@@ -404,10 +418,10 @@ bindsym $mod+m bar mode toggle
 
 # Theme colors
 # class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.focused          #556064 #556064 #eeeeee #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #aaaaaa #454948
+  client.unfocused        #2F3D44 #2F3D44 #aaaaaa #454948
+  client.urgent           #CB4B16 #FDF6E3 #aaaaaa #268BD2
   client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
   client.background       #2B2C2B

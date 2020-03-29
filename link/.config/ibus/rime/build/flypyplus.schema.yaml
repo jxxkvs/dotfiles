@@ -1,10 +1,14 @@
 __build_info:
   rime_version: 1.5.3
   timestamps:
-    default: 1582888310
+    default: 1584190865
     default.custom: 1582888310
     flypyplus.custom: 0
     flypyplus.schema: 1582888310
+    key_bindings: 1584190865
+    key_bindings.custom: 0
+    punctuation: 1584190865
+    punctuation.custom: 0
 custom_phraseVD:
   db_class: stabledb
   dictionary: ""
@@ -155,9 +159,11 @@ punctuator:
 recognizer:
   import_preset: default
   patterns:
+    email: "^[A-Za-z][-_.0-9A-Za-z]*@.*$"
     punct: ""
     reverse_lookup: "[a-z`]*`+[a-z`]*"
     uppercase: ""
+    url: "^(www[.]|https?:|ftp[.:]|mailto:|file:).*$|^[a-z]+[.].+$"
 reverse_lookup:
   comment_format:
     - "xform/ / /"
